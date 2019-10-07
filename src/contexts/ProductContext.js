@@ -1,19 +1,19 @@
-import React, { Component, createContext, useState } from "react";
-import data from "../data";
+import React, { Component, createContext, useState } from 'react'
+import data from '../data'
 
-export const ProductContext = createContext();
+export const ProductContext = createContext()
 
 const ProductContextProvider = props => {
-  const [products, setProducts] = useState(data);
+  const [products, setProducts] = useState(data)
 
-  const addItem = () => {};
+  const addItem = () => {}
 
   return (
     <ProductContext.Provider value={{ products, addItem }}>
       {props.children}
     </ProductContext.Provider>
-  );
-};
+  )
+}
 
 // class ProductContextProvider extends Component {
 //   state = {
@@ -35,4 +35,4 @@ const ProductContextProvider = props => {
 //   }
 // }
 
-export default ProductContextProvider;
+export default ProductContextProvider
