@@ -1,19 +1,21 @@
-import React, { Component, createContext, useState } from 'react'
-import data from '../data'
+import React, { createContext, useState, useEffect } from "react";
+import data from "../data";
 
-export const ProductContext = createContext()
+export const ProductContext = createContext();
 
 const ProductContextProvider = props => {
-  const [products, setProducts] = useState(data)
+  const [products, setProducts] = useState(data);
 
-  const addItem = () => {}
+  useEffect(() => {
+    localStorage.setItem("products", JSON.stringify(products));
+  }, [products]);
 
   return (
-    <ProductContext.Provider value={{ products, addItem }}>
+    <ProductContext.Provider value={{ products }}>
       {props.children}
     </ProductContext.Provider>
-  )
-}
+  );
+};
 
 // class ProductContextProvider extends Component {
 //   state = {
@@ -35,4 +37,4 @@ const ProductContextProvider = props => {
 //   }
 // }
 
-export default ProductContextProvider
+export default ProductContextProvider;
